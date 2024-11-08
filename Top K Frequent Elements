@@ -1,0 +1,14 @@
+class Solution(object):
+    def topKFrequent(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
+        count = Counter(nums)
+
+        freq_list = [(freq, num) for num, freq in count.items()]
+
+        top_k = heapq.nlargest(k, freq_list)
+
+        return [num for freq, num in top_k]
